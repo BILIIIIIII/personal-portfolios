@@ -1,3 +1,5 @@
+import { currentYear } from "../shared/lib/fullYear";
+
 export function Header(): string {
 	return `
    <header>
@@ -20,7 +22,7 @@ export function Header(): string {
         </div>
 
         <div class="menu">
-          <nav>2025</nav>
+         <nav>${currentYear}</nav>
           <a href="#about-me" class="scroll-down"><i class="bx bx-right-arrow-alt"></i>scroll down</a>
         </div>
       </header>
