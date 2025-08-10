@@ -1,24 +1,46 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import { AboutMe } from "./components/AboutMe.ts";
+import { Footer } from "./components/Footer.ts";
+import { Header } from "./components/Header.ts";
+import { Hero } from "./components/Hero.ts";
+import { Interest } from "./components/Interest.ts";
+import { Projects } from "./components/Projects.ts";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
+import {
+	populateProjectCards,
+	populateSocmedLinks,
+} from "./shared/lib/dynamicContent.ts";
+
+import "./globals.css";
+
+const appElement = document.querySelector<HTMLDivElement>("#app");
+
+if (appElement) {
+	appElement.innerHTML = `
+    <div id="cont">
+      ${Header()}
+      ${Hero()}
+      <main>  
+        ${AboutMe()}
+        ${Interest()}
+      </main>
+      <marquee behavior="" direction=""><span id="title">My Portfolio's</span> .</marquee>
+      <main>
+        ${Projects()}
+      </main>
+      ${Footer()}
     </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+  `;
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+	const logosContainer = document.querySelector<HTMLDivElement>("#logos");
+	const projectsContainer =
+		document.querySelector<HTMLDivElement>("#project-cards");
+
+	if (logosContainer) {
+		populateSocmedLinks(logosContainer);
+	}
+	if (projectsContainer) {
+		populateProjectCards(projectsContainer);
+	}
+} else {
+	console.error("Fatal: Could not find element with id #app");
+}
