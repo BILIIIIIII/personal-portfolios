@@ -23,7 +23,6 @@ if (appElement) {
         ${AboutMe()}
         ${Interest()}
       </main>
-      <marquee behavior="" direction=""><span id="title">My Portfolio's</span> .</marquee>
       <main>
         ${Projects()}
       </main>
@@ -44,3 +43,5 @@ if (appElement) {
 } else {
 	console.error("Fatal: Could not find element with id #app");
 }
+
+// <marquee behavior="" direction=""><span id="title">My Portfolio's</span> .</marquee>
